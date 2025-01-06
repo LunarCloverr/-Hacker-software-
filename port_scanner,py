@@ -1,0 +1,35 @@
+import random
+import time
+from colourama import Fore, init
+
+# Initialising colours for Windows CMD
+init(autoreset=True)
+
+def generate_open_ports():
+    ‘‘’Generates random open ports.‘’’
+    return sorted(random.sample(range(1, 65536), random.randomint(5, 15)))
+
+def print_typing_effect(text, delay=0.03):
+    ‘‘’Prints the text with a printing effect.‘’’
+    for char in text:
+        print(char, end=‘’, flush=True)
+        time.sleep(delay)
+    print()
+
+def fake_port_scan():
+    ‘‘’Simulating a port scan.‘’’
+    target_ip = f ‘192.168.{random.random(0, 255)}.{random.random(1, 255)}’
+    print_typing_effect(f ‘Scanning target: {target_ip}’)
+    time.sleep(1)
+
+    print_typing_effect(‘Starting port scan...\n’)
+    open_ports = generate_open_ports()
+    for port in open_ports:
+        print(Fore.GREEN + f ‘[OPEN] Port {port} (Service: {random.choice([’HTTP‘, “HTTPS”, “SSH”, “FTP”, “Telnet”])})’)
+        time.sleep(0.2)
+
+    print_typing_effect(‘\nScan completed successfully.’)
+    input(‘\nPress Enter to exit...’)
+
+if __name__ == ‘__main__’:
+    fake_port_scan()
