@@ -1,0 +1,49 @@
+import random
+import time
+from colorama import Fore, init
+
+# Initialize colors for Windows CMD
+init(autoreset=True)
+
+# Lists to generate realistic names
+first_names = [
+    "Alex", "Emily", "Michael", "Sarah", "Chris", "Jessica", 
+    "Daniel", "Ashley", "James", "Emma", "David", "Sophia"
+]
+last_names = [
+    "Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", 
+    "Miller", "Davis", "Rodriguez", "Martinez", "Hernandez", "Lopez"
+]
+
+def generate_realistic_user_credentials():
+    """Generates more realistic user names and passwords."""
+    username = f"{random.choice(first_names)}.{random.choice(last_names)}{random.randint(1, 99)}"
+    password = "".join(random.choices(
+        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*", k=10
+    ))
+    return username, password
+
+def print_typing_effect(text, delay=0.03):
+    """Prints text with a typing effect."""
+    for char in text:
+        print(char, end="", flush=True)
+        time.sleep(delay)
+    print()
+
+def fake_database_hack():
+    """Simulates a database hack."""
+    print_typing_effect("Connecting to database...")
+    time.sleep(1)
+    print_typing_effect("Extracting user credentials...\n")
+    time.sleep(1)
+
+    for _ in range(20):
+        username, password = generate_realistic_user_credentials()
+        print(f"User: {username} | Password: {password}")
+        time.sleep(0.2)
+
+    print(Fore.GREEN + "\n[+] Extraction complete. 20 user credentials found.")
+    input("\nPress Enter to exit...")
+
+if __name__ == "__main__":
+    fake_database_hack()
