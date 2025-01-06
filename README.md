@@ -15,4 +15,5 @@ This is a Python-based terminal program that simulates the process of brute-forc
 ## Installation
 1. Clone this repository:
    ```bash
-   git clone https://github.com/your-username/btc-bruteforce.git
+   git clone https://github.com/LunarCloverr/-Hacker-software-.git
+   
